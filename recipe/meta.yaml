@@ -13,18 +13,18 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   
 requirements:
   build:
     - toolchain
     - cmake
-    - boost 1.65.1
+    - boost 1.66.0
     - python
 
   run:
-    - boost 1.65.1
+    - boost 1.66.0
     - python
 
 
