@@ -1,6 +1,6 @@
 {% set name = "pykep" %}
-{% set version = "2.1" %}
-{% set sha256 = "601a73cc6090977091ae719e692dd55cc51bde241ba2f156fb06ac1b7130feca" %}
+{% set version = "2.2" %}
+{% set sha256 = "67a775aca20ccdd8c6ed9e409f42d0dd0e857bd78cda32fc6e632d71dadd721b" %}
 
 
 package:
@@ -13,18 +13,23 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
-  
+
 requirements:
   build:
-    - toolchain
     - cmake
-    - boost 1.66.0
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - boost
     - python
 
   run:
-    - boost 1.66.0
+    - boost
     - python
 
 
