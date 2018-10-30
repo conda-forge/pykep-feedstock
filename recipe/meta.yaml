@@ -13,15 +13,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1000
   skip: true  # [win]
 
 requirements:
   build:
     - cmake
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
