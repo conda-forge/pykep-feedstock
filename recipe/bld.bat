@@ -2,7 +2,9 @@ mkdir build
 cd build
 
 cmake ^
-    -G "%CMAKE_GENERATOR%" ^
+    -G "NMake Makefiles" ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DBoost_NO_BOOST_CMAKE=ON ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DBUILD_SPICE=yes ^
