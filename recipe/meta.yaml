@@ -27,6 +27,7 @@ requirements:
     - boost-cpp
     - python
   run:
+    - python
     - boost-cpp
     - scikit-learn
     - numba
