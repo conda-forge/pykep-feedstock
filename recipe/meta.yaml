@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<36 or win32]
+  skip: true  # [(win and py<36) or win32]
 
 requirements:
   build:
@@ -24,12 +24,10 @@ requirements:
     - clang      # [win]
     - ninja      # [win]
   host:
-    - boost
+    - boost-cpp
     - python
   run:
-    - boost
-    - python
-    - pygmo
+    - boost-cpp
     - scikit-learn
     - numba
     - matplotlib
