@@ -31,8 +31,6 @@ requirements:
     - boost
     - boost-cpp
     - python
-    - scikit-learn
-    - numba
     - matplotlib
     - numpy
     - scipy
