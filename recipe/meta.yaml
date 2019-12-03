@@ -24,11 +24,13 @@ requirements:
     - clang      # [win]
     - ninja      # [win]
   host:
+    - boost
     - boost-cpp
     - python
   run:
-    - python
+    - boost
     - boost-cpp
+    - python
     - scikit-learn
     - numba
     - matplotlib
