@@ -1,6 +1,6 @@
 {% set name = "pykep" %}
-{% set version = "2.4" %}
-{% set sha256 = "d8d5524c13b8c8bf95b45a84f101ef69ee74933f044278977cd460376204bec9" %}
+{% set version = "2.4.1" %}
+{% set sha256 = "09cdb91c8bb11fda6f8a15dc39c67990016ec8d0755d79db97c83a43a7bd7952" %}
 
 
 package:
@@ -14,27 +14,27 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
+  skip: true  # [(win and py<35) or win32]
 
 requirements:
   build:
     - cmake
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - clang      # [win]
+    - ninja      # [win]
   host:
     - boost
     - python
-
   run:
     - boost
     - python
-
-
-test:
-  commands:
-    - test -f
-  imports:
-    - pykep
+    - pygmo
+    - scikit-learn
+    - numba
+    - matplotlib
+    - numpy
+    - scipy
 
 about:
   home: https://esa.github.io/pykep/
