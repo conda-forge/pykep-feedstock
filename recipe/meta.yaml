@@ -1,6 +1,6 @@
 {% set name = "pykep" %}
-{% set version = "2.3" %}
-{% set sha256 = "109ea1931433829abbbf187d6ace41233bba638d6743418fba034d83bd199987" %}
+{% set version = "2.4" %}
+{% set sha256 = "d8d5524c13b8c8bf95b45a84f101ef69ee74933f044278977cd460376204bec9" %}
 
 
 package:
@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
