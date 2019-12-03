@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [(win and py<35) or win32]
+  skip: true  # [py<36 or win32]
 
 requirements:
   build:
