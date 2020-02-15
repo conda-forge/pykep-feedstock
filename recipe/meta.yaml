@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [(win and py<36) or win32]
 
 requirements:
@@ -31,7 +31,7 @@ requirements:
     - boost
     - boost-cpp
     - python
-    - matplotlib
+    - matplotlib-base
     - numpy
     - scipy
 
