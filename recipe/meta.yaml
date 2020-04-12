@@ -20,8 +20,8 @@ build:
 requirements:
   build:
     - cmake
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}   # [not win]
+    - {{ compiler('cxx') }}   # [not win]
     - clang      # [win]
     - ninja      # [win]
   host:
@@ -29,11 +29,11 @@ requirements:
     - boost-cpp
     - python
   run:
-    - boost
-    - boost-cpp
+    - {{ pin_compatible("boost", max_pin="x.x") }}
+    - {{ pin_compatible("boost-cpp", max_pin="x.x") }}
     - python
-    - matplotlib
-    - numpy
+    - matplotlib-base
+    - {{ pin_compatible('numpy') }}
     - scipy
 
 about:
