@@ -1,6 +1,6 @@
 {% set name = "pykep" %}
-{% set version = "2.4.1" %}
-{% set sha256 = "09cdb91c8bb11fda6f8a15dc39c67990016ec8d0755d79db97c83a43a7bd7952" %}
+{% set version = "2.5.1" %}
+{% set sha256 = "dce5ffbd662f5851f45841c52e4d4e521150162ad3fa550d3e005ed6161bfd07" %}
 
 
 package:
@@ -13,15 +13,15 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [(win and py<36) or win32]
   skip: true  # [py2k]
 
 requirements:
   build:
     - cmake
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}   # [not win]
+    - {{ compiler('cxx') }}   # [not win]
     - clang      # [win]
     - ninja      # [win]
   host:
@@ -29,10 +29,10 @@ requirements:
     - boost-cpp
     - python
   run:
-    - boost
-    - boost-cpp
+    - {{ pin_compatible("boost", max_pin="x.x") }}
+    - {{ pin_compatible("boost-cpp", max_pin="x.x") }}
     - python
-    - matplotlib
+    - matplotlib-base
     - numpy
     - scipy
 
@@ -40,7 +40,7 @@ about:
   home: https://esa.github.io/pykep/
   license: GPL v3 and LGPL v3
   license_file: LICENSE.txt
-  summary: 'pykep is a scientific library providing basic tools for interplanetary trajectory design.'
+  summary: pykep is a scientific library providing basic tools for interplanetary trajectory design.
 
 extra:
   recipe-maintainers:
