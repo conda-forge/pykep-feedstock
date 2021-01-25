@@ -33,7 +33,8 @@ requirements:
     - {{ pin_compatible("boost-cpp", max_pin="x.x") }}
     - python
     - matplotlib-base
-    - numpy
+    - {{ pin_compatible('numpy') }}
+
     - scipy
 
 about:
