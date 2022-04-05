@@ -8,7 +8,7 @@ if [[ "$target_platform" == linux-64 ]]; then
 fi
 
 # Install the dcgp headers first.
-cmake \
+cmake ${CMAKE_ARGS} \
     -DBoost_NO_BOOST_CMAKE=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
