@@ -19,7 +19,7 @@ build:
 
 requirements:
   build:
-    - make
+    - make       # [unix]
     - cmake
     - {{ compiler('c') }}   # [not win]
     - {{ compiler('cxx') }}   # [not win]
