@@ -11,9 +11,9 @@ cmake ^
     -DPYKEP_BUILD_SPICE=yes ^
     ..
 
-cmake --build . -- -v
+cmake --build . --config Release
+cmake --build . --config Release --target install
 
-cmake --build . --target install
 
 cd ..
 mkdir build_python
@@ -29,6 +29,5 @@ cmake ^
     -DPYKEP_BUILD_KEP_TOOLBOX=no ^
     ..
 
-cmake --build . -- -v
-
-cmake --build . --target install
+cmake --build . --config Release
+cmake --build . --config Release --target install
