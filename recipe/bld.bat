@@ -2,9 +2,7 @@ mkdir build
 cd build
 
 cmake ^
-    -G "Ninja" ^
-    -DCMAKE_C_COMPILER=clang-cl ^
-    -DCMAKE_CXX_COMPILER=clang-cl ^
+    -G "Visual Studio 16 2019" -A x64 ^
     -DBoost_NO_BOOST_CMAKE=ON ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
@@ -22,9 +20,7 @@ mkdir build_python
 cd build_python
 
 cmake ^
-    -G "Ninja" ^
-    -DCMAKE_C_COMPILER=clang-cl ^
-    -DCMAKE_CXX_COMPILER=clang-cl ^
+    -G "Visual Studio 16 2019" -A x64 ^
     -DBoost_NO_BOOST_CMAKE=ON ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
