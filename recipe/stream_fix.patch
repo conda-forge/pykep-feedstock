@@ -65,6 +65,53 @@ index 84559b1..cf9dd40 100644
  } // namespace sims_flanagan
  } // namespace kep_toolbox
  #endif // KEP_TOOLBOX_LEG_H
+diff --git a/include/keplerian_toolbox/sims_flanagan/leg_s.hpp b/include/keplerian_toolbox/sims_flanagan/leg_s.hpp
+index 0c74faf..5332d0b 100644
+--- a/include/keplerian_toolbox/sims_flanagan/leg_s.hpp
++++ b/include/keplerian_toolbox/sims_flanagan/leg_s.hpp
+@@ -47,6 +47,10 @@ namespace kep_toolbox
+ namespace sims_flanagan
+ {
+ 
++class KEP_TOOLBOX_DLL_PUBLIC leg_s;
++
++KEP_TOOLBOX_DLL_PUBLIC std::ostream &operator<<(std::ostream &s, const leg_s &in);
++
+ /// Single low-thrust leg (phase) using Sundmann variable
+ /**
+  * This class represents, generically, a low-thrust leg (phase) as a sequence of
+@@ -74,7 +78,7 @@ namespace sims_flanagan
+  */
+ class KEP_TOOLBOX_DLL_PUBLIC leg_s
+ {
+-    friend std::ostream &operator<<(std::ostream &s, const leg_s &in);
++    friend KEP_TOOLBOX_DLL_PUBLIC std::ostream &operator<<(std::ostream &s, const leg_s &in);
+ 
+ public:
+     std::string human_readable() const;
+@@ -518,7 +522,6 @@ private:
+     mutable std::vector<double> m_dv;
+ };
+ 
+-KEP_TOOLBOX_DLL_PUBLIC std::ostream &operator<<(std::ostream &s, const leg_s &in);
+ } // namespace sims_flanagan
+ } // namespace kep_toolbox
+ #endif // KEP_TOOLBOX_LEG_S_H
+diff --git a/include/keplerian_toolbox/sims_flanagan/sc_state.hpp b/include/keplerian_toolbox/sims_flanagan/sc_state.hpp
+index 2accc11..0edc27b 100644
+--- a/include/keplerian_toolbox/sims_flanagan/sc_state.hpp
++++ b/include/keplerian_toolbox/sims_flanagan/sc_state.hpp
+@@ -38,6 +38,10 @@ namespace kep_toolbox
+ namespace sims_flanagan
+ {
+ 
++class KEP_TOOLBOX_DLL_PUBLIC sc_state;
++
++std::ostream &operator<<(std::ostream &s, const sc_state &in);
++
+ /// Spacecraft state
+ /** The state of a spacecraft as defined by its position, velocity and mass. The class is basically
+  * a container of an array7D providing structured access to its components. In particular the
 diff --git a/include/keplerian_toolbox/sims_flanagan/spacecraft.hpp b/include/keplerian_toolbox/sims_flanagan/spacecraft.hpp
 index cdfa3fc..c5841ba 100644
 --- a/include/keplerian_toolbox/sims_flanagan/spacecraft.hpp
