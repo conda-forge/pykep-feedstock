@@ -33,6 +33,38 @@ index 0efe867..0b41889 100644
  } // namespace kep_toolbox
  
  #endif // KEP_TOOLBOX_LAMBERT_PROBLEM_H
+diff --git a/include/keplerian_toolbox/sims_flanagan/leg.hpp b/include/keplerian_toolbox/sims_flanagan/leg.hpp
+index 84559b1..cf9dd40 100644
+--- a/include/keplerian_toolbox/sims_flanagan/leg.hpp
++++ b/include/keplerian_toolbox/sims_flanagan/leg.hpp
+@@ -52,6 +52,10 @@ namespace kep_toolbox
+ namespace sims_flanagan
+ {
+ 
++class KEP_TOOLBOX_DLL_PUBLIC leg;
++
++KEP_TOOLBOX_DLL_PUBLIC std::ostream &operator<<(std::ostream &s, const leg &in);
++
+ /// Single low-thrust leg (phase)
+ /**
+  * This class represents, generically, a low-thrust leg (phase) as a sequence of successive
+@@ -70,7 +74,7 @@ namespace sims_flanagan
+  */
+ class KEP_TOOLBOX_DLL_PUBLIC leg
+ {
+-    friend std::ostream &operator<<(std::ostream &s, const leg &in);
++    friend KEP_TOOLBOX_DLL_PUBLIC std::ostream &operator<<(std::ostream &s, const leg &in);
+ 
+ public:
+     std::string human_readable() const;
+@@ -675,7 +679,6 @@ private:
+     int m_tol;
+ };
+ 
+-KEP_TOOLBOX_DLL_PUBLIC std::ostream &operator<<(std::ostream &s, const leg &in);
+ } // namespace sims_flanagan
+ } // namespace kep_toolbox
+ #endif // KEP_TOOLBOX_LEG_H
 diff --git a/include/keplerian_toolbox/sims_flanagan/spacecraft.hpp b/include/keplerian_toolbox/sims_flanagan/spacecraft.hpp
 index cdfa3fc..c5841ba 100644
 --- a/include/keplerian_toolbox/sims_flanagan/spacecraft.hpp
