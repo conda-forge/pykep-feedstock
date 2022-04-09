@@ -35,7 +35,6 @@ requirements:
     - python
     - matplotlib-base
     - {{ pin_compatible('numpy') }}
-
     - scipy
 
 about:
@@ -47,3 +46,4 @@ about:
 extra:
   recipe-maintainers:
     - darioizzo
+    - bluescarni

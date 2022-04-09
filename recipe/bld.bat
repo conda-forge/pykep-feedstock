@@ -4,7 +4,6 @@ cd build
 cmake ^
     -G "Visual Studio 16 2019" -A x64 ^
     -DBoost_NO_BOOST_CMAKE=ON ^
-    -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DPYKEP_BUILD_TESTS=no ^
@@ -22,7 +21,6 @@ cd build_python
 cmake ^
     -G "Visual Studio 16 2019" -A x64 ^
     -DBoost_NO_BOOST_CMAKE=ON ^
-    -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DPYKEP_BUILD_PYKEP=yes ^
