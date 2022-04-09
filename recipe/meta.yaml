@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - patchisatty.patch
-    - lambert_stream_fix.patch
+    - stream_fix.patch
 
 build:
   number: 5
