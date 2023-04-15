@@ -16,7 +16,7 @@ source:
     - stream_fix.patch
 
 build:
-  number: 7
+  number: 8
   skip: true  # [(win and py<36) or win32]
   skip: true  # [py2k]
 
