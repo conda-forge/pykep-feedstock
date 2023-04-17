@@ -11,9 +11,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/esa/pykep/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - patchisatty.patch
-    - stream_fix.patch
 
 build:
   number: 0
@@ -50,4 +47,3 @@ extra:
   recipe-maintainers:
     - bluescarni
     - darioizzo
-    - bluescarni
