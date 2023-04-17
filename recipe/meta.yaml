@@ -21,10 +21,10 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - make       # [unix]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
-    - {{ compiler('c') }}   # [not win]
-    - {{ compiler('cxx') }}   # [not win]
+    - make       # [unix]
   host:
     - boost
     - boost-cpp
