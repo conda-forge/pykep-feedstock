@@ -1,11 +1,11 @@
-About pykep
-===========
+About pykep-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pykep-feedstock/blob/main/LICENSE.txt)
 
 Home: https://esa.github.io/pykep/
 
 Package license: GPL v3 and LGPL v3
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pykep-feedstock/blob/main/LICENSE.txt)
 
 Summary: pykep is a scientific library providing basic tools for interplanetary trajectory design.
 

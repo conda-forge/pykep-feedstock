@@ -1,6 +1,6 @@
 {% set name = "pykep" %}
-{% set version = "2.6" %}
-{% set sha256 = "67ba9a45b51ce9e99117621a4901095c5404c7ec285ac58e7782c94f37c65de7" %}
+{% set version = "2.6.2" %}
+{% set sha256 = "4e298961298b837ba42b98ccaf11639d3230b6e18724a40b7422f9c97af41f6c" %}
 
 
 package:
@@ -11,12 +11,9 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/esa/pykep/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - patchisatty.patch
-    - stream_fix.patch
 
 build:
-  number: 7
+  number: 0
   skip: true  # [(win and py<36) or win32]
   skip: true  # [py2k]
 
@@ -24,10 +21,10 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - make       # [unix]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
-    - {{ compiler('c') }}   # [not win]
-    - {{ compiler('cxx') }}   # [not win]
+    - make       # [unix]
   host:
     - boost
     - boost-cpp
@@ -50,4 +47,3 @@ extra:
   recipe-maintainers:
     - bluescarni
     - darioizzo
-    - bluescarni
