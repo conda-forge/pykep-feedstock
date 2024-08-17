@@ -34,7 +34,7 @@ requirements:
     - python
     - matplotlib-base
     - {{ pin_compatible('numpy') }}
-    - scipy
+    - scipy <1.14
 
 about:
   home: https://esa.github.io/pykep/
