@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   skip: true  # [(win and py<36) or win32]
   skip: true  # [py2k]
 
@@ -34,13 +34,14 @@ requirements:
     - python
     - matplotlib-base
     - {{ pin_compatible('numpy') }}
-    - scipy
+    - scipy <1.14
 
 about:
   home: https://esa.github.io/pykep/
-  license: GPL v3 and LGPL v3
+  license: GPL-3.0-only OR LGPL-3.0-only
   license_file: LICENSE.txt
   summary: pykep is a scientific library providing basic tools for interplanetary trajectory design.
+  dev_url: https://github.com/esa/pykep
 
 extra:
   recipe-maintainers:
