@@ -6,6 +6,7 @@
 package:
   name: {{ name|lower }}
   version: {{ version }}
+  patch: int.diff
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
