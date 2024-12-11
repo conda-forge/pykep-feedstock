@@ -10,7 +10,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/esa/pykep/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: {{ sha256 }} 
 
 build:
   number: 0
