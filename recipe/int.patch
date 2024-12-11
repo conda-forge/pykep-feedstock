@@ -1,0 +1,423 @@
+diff --git a/src/third_party/cspice/dfe.c b/src/third_party/cspice/dfe.c
+index 6963d5a..e747527 100644
+--- a/src/third_party/cspice/dfe.c
++++ b/src/third_party/cspice/dfe.c
+@@ -2,7 +2,7 @@
+ #include "fio.h"
+ #include "fmt.h"
+ 
+-y_rsk(Void)
++int y_rsk(Void)
+ {
+ 	if(f__curunit->uend || f__curunit->url <= f__recpos
+ 		|| f__curunit->url == 1) return 0;
+@@ -11,7 +11,7 @@ y_rsk(Void)
+ 	} while(++f__recpos < f__curunit->url);
+ 	return 0;
+ }
+-y_getc(Void)
++int y_getc(Void)
+ {
+ 	int ch;
+ 	if(f__curunit->uend) return(-1);
+@@ -61,9 +61,9 @@ y_newrec(Void)
+ }
+ 
+ #ifdef KR_headers
+-c_dfe(a) cilist *a;
++int c_dfe(a) cilist *a;
+ #else
+-c_dfe(cilist *a)
++int c_dfe(cilist *a)
+ #endif
+ {
+ 	f__sequential=0;
+diff --git a/src/third_party/cspice/due.c b/src/third_party/cspice/due.c
+index 83f4dc0..c6526f1 100644
+--- a/src/third_party/cspice/due.c
++++ b/src/third_party/cspice/due.c
+@@ -2,9 +2,9 @@
+ #include "fio.h"
+ 
+ #ifdef KR_headers
+-c_due(a) cilist *a;
++int c_due(a) cilist *a;
+ #else
+-c_due(cilist *a)
++int c_due(cilist *a)
+ #endif
+ {
+ 	if(!f__init) f_init();
+diff --git a/src/third_party/cspice/fmt.c b/src/third_party/cspice/fmt.c
+index 364210c..9a1a52f 100644
+--- a/src/third_party/cspice/fmt.c
++++ b/src/third_party/cspice/fmt.c
+@@ -44,7 +44,7 @@ char *ap_end(char *s)
+ #ifdef KR_headers
+ op_gen(a,b,c,d)
+ #else
+-op_gen(int a, int b, int c, int d)
++int op_gen(int a, int b, int c, int d)
+ #endif
+ {	struct syl *p= &f__syl[f__pc];
+ 	if(f__pc>=SYLMX)
+@@ -111,7 +111,7 @@ char *f_s(char *s, int curloc)
+ #ifdef KR_headers
+ ne_d(s,p) char *s,**p;
+ #else
+-ne_d(char *s, char **p)
++int ne_d(char *s, char **p)
+ #endif
+ {	int n,x,sign=0;
+ 	struct syl *sp;
+@@ -203,7 +203,7 @@ ne_d(char *s, char **p)
+ #ifdef KR_headers
+ e_d(s,p) char *s,**p;
+ #else
+-e_d(char *s, char **p)
++int e_d(char *s, char **p)
+ #endif
+ {	int i,im,n,w,d,e,found=0,x=0;
+ 	char *sv=s;
+@@ -362,7 +362,7 @@ char *f_list(char *s)
+ #ifdef KR_headers
+ pars_f(s) char *s;
+ #else
+-pars_f(char *s)
++int pars_f(char *s)
+ #endif
+ {
+ 	f__parenlvl=f__revloc=f__pc=0;
+@@ -380,7 +380,7 @@ flag f__workdone, f__nonl;
+ #ifdef KR_headers
+ type_f(n)
+ #else
+-type_f(int n)
++int type_f(int n)
+ #endif
+ {
+ 	switch(n)
+@@ -504,7 +504,7 @@ loop:	switch(type_f((p= &f__syl[f__pc])->op))
+ 	}
+ 	return(0);
+ }
+-en_fio(Void)
++int en_fio(Void)
+ {	ftnint one=1;
+ 	return(do_fio(&one,(char *)NULL,(ftnint)0));
+ }
+diff --git a/src/third_party/cspice/iio.c b/src/third_party/cspice/iio.c
+index 58b2a75..b92c6f1 100644
+--- a/src/third_party/cspice/iio.c
++++ b/src/third_party/cspice/iio.c
+@@ -6,7 +6,7 @@ char *f__icend;
+ extern icilist *f__svic;
+ int f__icnum;
+ extern int f__hiwater;
+-z_getc(Void)
++int z_getc(Void)
+ {
+ 	if(f__recpos++ < f__svic->icirlen) {
+ 		if(f__icptr >= f__icend) err(f__svic->iciend,(EOF),"endfile");
+@@ -25,7 +25,7 @@ z_putc(int c)
+ 	if (f__icptr < f__icend && f__recpos++ < f__svic->icirlen)
+ 		*f__icptr++ = c;
+ }
+-z_rnew(Void)
++int z_rnew(Void)
+ {
+ 	f__icptr = f__svic->iciunit + (++f__icnum)*f__svic->icirlen;
+ 	f__recpos = 0;
+@@ -42,9 +42,9 @@ z_endp(Void)
+ 	}
+ 
+ #ifdef KR_headers
+-c_si(a) icilist *a;
++int c_si(a) icilist *a;
+ #else
+-c_si(icilist *a)
++int c_si(icilist *a)
+ #endif
+ {
+ 	f__elist = (cilist *)a;
+@@ -92,7 +92,7 @@ integer s_rsfi(icilist *a)
+ 	return(0);
+ }
+ 
+-z_wnew(Void)
++int z_wnew(Void)
+ {
+ 	if (f__recpos < f__hiwater) {
+ 		f__icptr += f__hiwater - f__recpos;
+diff --git a/src/third_party/cspice/lread.c b/src/third_party/cspice/lread.c
+index 6f537a7..9303ee0 100644
+--- a/src/third_party/cspice/lread.c
++++ b/src/third_party/cspice/lread.c
+@@ -73,7 +73,7 @@ extern int ungetc(int, FILE*);	/* for systems with a buggy stdio.h */
+ #endif
+ #endif
+ 
+-t_getc(Void)
++int t_getc(Void)
+ {	int ch;
+ 	if(f__curunit->uend) return(EOF);
+ 	if((ch=getc(f__cf))!=EOF) return(ch);
+@@ -523,9 +523,9 @@ l_CHAR(Void)
+ 	}
+ }
+ #ifdef KR_headers
+-c_le(a) cilist *a;
++int c_le(a) cilist *a;
+ #else
+-c_le(cilist *a)
++int c_le(cilist *a)
+ #endif
+ {
+ 	if(!f__init)
+@@ -543,9 +543,9 @@ c_le(cilist *a)
+ 	return(0);
+ }
+ #ifdef KR_headers
+-l_read(number,ptr,len,type) ftnint *number,type; char *ptr; ftnlen len;
++int l_read(number,ptr,len,type) ftnint *number,type; char *ptr; ftnlen len;
+ #else
+-l_read(ftnint *number, char *ptr, ftnlen len, ftnint type)
++int l_read(ftnint *number, char *ptr, ftnlen len, ftnint type)
+ #endif
+ {
+ #define Ptr ((flex *)ptr)
+diff --git a/src/third_party/cspice/lwrite.c b/src/third_party/cspice/lwrite.c
+index bf209f4..355dd16 100644
+--- a/src/third_party/cspice/lwrite.c
++++ b/src/third_party/cspice/lwrite.c
+@@ -232,9 +232,9 @@ lwrt_C(double a, double b)
+ 	PUT(')');
+ }
+ #ifdef KR_headers
+-l_write(number,ptr,len,type) ftnint *number,type; char *ptr; ftnlen len;
++int l_write(number,ptr,len,type) ftnint *number,type; char *ptr; ftnlen len;
+ #else
+-l_write(ftnint *number, char *ptr, ftnlen len, ftnint type)
++int l_write(ftnint *number, char *ptr, ftnlen len, ftnint type)
+ #endif
+ {
+ #define Ptr ((flex *)ptr)
+diff --git a/src/third_party/cspice/open.c b/src/third_party/cspice/open.c
+index fcff7da..5bcb683 100644
+--- a/src/third_party/cspice/open.c
++++ b/src/third_party/cspice/open.c
+@@ -421,11 +421,11 @@ static void
+ 
+ #ifdef KR_headers
+ 
+-   fk_open( seq, fmt, n) ftnint n;
++   int fk_open( seq, fmt, n) ftnint n;
+ 
+ #else
+ 
+-   fk_open(int seq, int fmt, ftnint n)
++   int fk_open(int seq, int fmt, ftnint n)
+ 
+ #endif
+    {
+diff --git a/src/third_party/cspice/rdfmt.c b/src/third_party/cspice/rdfmt.c
+index 3de3e49..29a4b75 100644
+--- a/src/third_party/cspice/rdfmt.c
++++ b/src/third_party/cspice/rdfmt.c
+@@ -387,9 +387,9 @@ rd_POS(char *s)
+ 	return(1);
+ }
+ #ifdef KR_headers
+-rd_ed(p,ptr,len) struct syl *p; char *ptr; ftnlen len;
++int rd_ed(p,ptr,len) struct syl *p; char *ptr; ftnlen len;
+ #else
+-rd_ed(struct syl *p, char *ptr, ftnlen len)
++int rd_ed(struct syl *p, char *ptr, ftnlen len)
+ #endif
+ {	int ch;
+ 	for(;f__cursor>0;f__cursor--) if((ch=(*f__getn)())<0) return(ch);
+@@ -452,7 +452,7 @@ rd_ed(struct syl *p, char *ptr, ftnlen len)
+ #ifdef KR_headers
+ rd_ned(p) struct syl *p;
+ #else
+-rd_ned(struct syl *p)
++int rd_ned(struct syl *p)
+ #endif
+ {
+ 	switch(p->op)
+diff --git a/src/third_party/cspice/rsfe.c b/src/third_party/cspice/rsfe.c
+index f95d4e4..dac4034 100644
+--- a/src/third_party/cspice/rsfe.c
++++ b/src/third_party/cspice/rsfe.c
+@@ -116,7 +116,7 @@ void    zzsetnnread_( logical * on );
+ -&
+ */
+ 
+-xrd_SL(Void)
++int xrd_SL(Void)
+    {
+ 
+    int ch;
+@@ -143,7 +143,7 @@ xrd_SL(Void)
+    }
+ 
+ 
+-x_getc(Void)
++int x_getc(Void)
+    {
+    
+    int ch;
+@@ -187,13 +187,13 @@ x_getc(Void)
+    }
+ 
+ 
+-x_endp(Void)
++int x_endp(Void)
+    {
+    xrd_SL();
+    return f__curunit->uend == 1 ? EOF : 0;
+    }
+ 
+-x_rev(Void)
++int x_rev(Void)
+    {
+    (void) xrd_SL();
+    return(0);
+diff --git a/src/third_party/cspice/rsne.c b/src/third_party/cspice/rsne.c
+index cc679c7..50c60e7 100644
+--- a/src/third_party/cspice/rsne.c
++++ b/src/third_party/cspice/rsne.c
+@@ -36,7 +36,7 @@
+ 
+  extern flag f__lquit;
+  extern int f__lcount, nml_read;
+- extern t_getc(Void);
++ extern int t_getc(Void);
+ 
+ #ifdef KR_headers
+  extern char *malloc(), *memset();
+@@ -291,9 +291,9 @@ print_ne(cilist *a)
+  static char where0[] = "namelist read start ";
+ 
+ #ifdef KR_headers
+-x_rsne(a) cilist *a;
++int x_rsne(a) cilist *a;
+ #else
+-x_rsne(cilist *a)
++int x_rsne(cilist *a)
+ #endif
+ {
+ 	int ch, got1, k, n, nd, quote, readall;
+diff --git a/src/third_party/cspice/sfe.c b/src/third_party/cspice/sfe.c
+index cade56a..de6bf75 100644
+--- a/src/third_party/cspice/sfe.c
++++ b/src/third_party/cspice/sfe.c
+@@ -11,9 +11,9 @@ integer e_rsfe(Void)
+ 	return(n);
+ }
+ #ifdef KR_headers
+-c_sfe(a) cilist *a; /* check */
++int c_sfe(a) cilist *a; /* check */
+ #else
+-c_sfe(cilist *a) /* check */
++int c_sfe(cilist *a) /* check */
+ #endif
+ {	unit *p;
+ 	f__curunit = p = &f__units[a->ciunit];
+diff --git a/src/third_party/cspice/sue.c b/src/third_party/cspice/sue.c
+index d2a7c34..e19ba9c 100644
+--- a/src/third_party/cspice/sue.c
++++ b/src/third_party/cspice/sue.c
+@@ -4,9 +4,9 @@ extern uiolen f__reclen;
+ long f__recloc;
+ 
+ #ifdef KR_headers
+-c_sue(a) cilist *a;
++int c_sue(a) cilist *a;
+ #else
+-c_sue(cilist *a)
++int c_sue(cilist *a)
+ #endif
+ {
+ 	f__external=f__sequential=1;
+diff --git a/src/third_party/cspice/uio.c b/src/third_party/cspice/uio.c
+index e40875e..7240240 100644
+--- a/src/third_party/cspice/uio.c
++++ b/src/third_party/cspice/uio.c
+@@ -3,9 +3,9 @@
+ uiolen f__reclen;
+ 
+ #ifdef KR_headers
+-do_us(number,ptr,len) ftnint *number; char *ptr; ftnlen len;
++int do_us(number,ptr,len) ftnint *number; char *ptr; ftnlen len;
+ #else
+-do_us(ftnint *number, char *ptr, ftnlen len)
++int do_us(ftnint *number, char *ptr, ftnlen len)
+ #endif
+ {
+ 	if(f__reading)
+diff --git a/src/third_party/cspice/wref.c b/src/third_party/cspice/wref.c
+index 2f3fce8..0f31e3f 100644
+--- a/src/third_party/cspice/wref.c
++++ b/src/third_party/cspice/wref.c
+@@ -16,9 +16,9 @@
+ #endif
+ 
+ #ifdef KR_headers
+-wrt_E(p,w,d,e,len) ufloat *p; ftnlen len;
++int wrt_E(p,w,d,e,len) ufloat *p; ftnlen len;
+ #else
+-wrt_E(ufloat *p, int w, int d, int e, ftnlen len)
++int wrt_E(ufloat *p, int w, int d, int e, ftnlen len)
+ #endif
+ {
+ 	char buf[FMAX+EXPMAXDIGS+4], *s, *se;
+@@ -192,9 +192,9 @@ nogood:
+ 	}
+ 
+ #ifdef KR_headers
+-wrt_F(p,w,d,len) ufloat *p; ftnlen len;
++int wrt_F(p,w,d,len) ufloat *p; ftnlen len;
+ #else
+-wrt_F(ufloat *p, int w, int d, ftnlen len)
++int wrt_F(ufloat *p, int w, int d, ftnlen len)
+ #endif
+ {
+ 	int d1, sign, n;
+diff --git a/src/third_party/cspice/wrtfmt.c b/src/third_party/cspice/wrtfmt.c
+index 477c40f..004200f 100644
+--- a/src/third_party/cspice/wrtfmt.c
++++ b/src/third_party/cspice/wrtfmt.c
+@@ -220,7 +220,7 @@ wrt_H(int a, char *s)
+ #ifdef KR_headers
+ wrt_L(n,len, sz) Uint *n; ftnlen sz;
+ #else
+-wrt_L(Uint *n, int len, ftnlen sz)
++int wrt_L(Uint *n, int len, ftnlen sz)
+ #endif
+ {	int i;
+ 	long x;
+@@ -290,9 +290,9 @@ wrt_G(ufloat *p, int w, int d, int e, ftnlen len)
+ 	return(wrt_E(p,w,d,e,len));
+ }
+ #ifdef KR_headers
+-w_ed(p,ptr,len) struct syl *p; char *ptr; ftnlen len;
++int w_ed(p,ptr,len) struct syl *p; char *ptr; ftnlen len;
+ #else
+-w_ed(struct syl *p, char *ptr, ftnlen len)
++int w_ed(struct syl *p, char *ptr, ftnlen len)
+ #endif
+ {
+ 	int i;
+@@ -336,9 +336,9 @@ w_ed(struct syl *p, char *ptr, ftnlen len)
+ 	}
+ }
+ #ifdef KR_headers
+-w_ned(p) struct syl *p;
++int w_ned(p) struct syl *p;
+ #else
+-w_ned(struct syl *p)
++int w_ned(struct syl *p)
+ #endif
+ {
+ 	switch(p->op)
