@@ -1,5 +1,5 @@
 # stay on clang 15 due to use of missing type specifiers that later clang versions error on
-c_compiler_version:            # [osx]
-  - 15                         # [osx]
-cxx_compiler_version:          # [osx]
-  - 15                         # [osx]
+#c_compiler_version:            # [osx]
+#  - 15                         # [osx]
+#cxx_compiler_version:          # [osx]
+#  - 15                         # [osx]
