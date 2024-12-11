@@ -6,13 +6,13 @@
 package:
   name: {{ name|lower }}
   version: {{ version }}
-  patches:
-    - int.patch
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/esa/pykep/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }} 
+  patches:
+    - int.patch
 
 build:
   number: 0
