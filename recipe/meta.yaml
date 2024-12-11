@@ -14,8 +14,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [(win and py<36) or win32]
-  skip: true  # [py2k]
 
 requirements:
   build:
@@ -38,7 +36,7 @@ requirements:
 
 about:
   home: https://esa.github.io/pykep/
-  license: GPL v3 and LGPL v3
+  license: GPL-2.0-or-later
   license_file: LICENSE.txt
   summary: pykep is a scientific library providing basic tools for interplanetary trajectory design.
 
