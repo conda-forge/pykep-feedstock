@@ -33,7 +33,7 @@ requirements:
   run:
     - python
     - matplotlib-base
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - scipy
 
 about:
