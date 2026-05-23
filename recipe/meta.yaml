@@ -47,6 +47,8 @@ requirements:
     - pygmo
     - sgp4
     - blas
+    - libatomic  # [linux]
+    - spiceypy
 
 about:
   home: https://esa.github.io/pykep/
