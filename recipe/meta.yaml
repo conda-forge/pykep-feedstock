@@ -22,11 +22,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - cmake >=3.28
+    - cmake >=3.28,<3.31
     - make       # [unix]
   host:
     - python
-    - libboost-devel
+    - libboost-devel >=1.73
     - pybind11 >=2.11
     - heyoka >=7
     - fmt >=10
