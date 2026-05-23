@@ -11,8 +11,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/esa/pykep/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - int.patch
 
 build:
   number: 0
@@ -24,22 +22,34 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - cmake
+    - cmake >=3.28
     - make       # [unix]
   host:
-    - libboost-python-devel
-    - libboost-devel
     - python
+    - libboost-devel
+    - pybind11 >=2.11
+    - heyoka >=7
+    - fmt >=10
+    - spdlog
+    - xtensor >=0.26
+    - xtensor-blas
+    - pagmo-devel
+    - eigen >=3,<5
+    - nlopt <2.10.1
   run:
     - python
+    - heyoka.py >=7
     - matplotlib-base
-    - numpy <2.4
+    - numpy
     - scipy
+    - pygmo
+    - sgp4
+    - spiceypy
 
 about:
   home: https://esa.github.io/pykep/
-  license: GPL-2.0-or-later
-  license_file: LICENSE.txt
+  license: MPL-2.0
+  license_file: COPYING
   summary: pykep is a scientific library providing basic tools for interplanetary trajectory design.
 
 extra:
