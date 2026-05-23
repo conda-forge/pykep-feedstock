@@ -1,6 +1,6 @@
 {% set name = "pykep" %}
-{% set version = "2.6.4" %}
-{% set sha256 = "92a483dd96173bdeccaacb47db5c2b0d518ac7d9c5dd0ed8e1803eafaff6535a" %}
+{% set version = "3.0.0" %}
+{% set sha256 = "27b350d24e5c15632f6a11aab8624cf76cf9604a5cab17761cc0459c94d2c7d0" %}
 
 
 package:
@@ -10,12 +10,12 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/esa/pykep/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }} 
+  sha256: {{ sha256 }}
   patches:
     - int.patch
 
 build:
-  number: 6
+  number: 0
 
 requirements:
   build:
