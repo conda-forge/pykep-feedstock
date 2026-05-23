@@ -35,6 +35,7 @@ requirements:
     - xtensor-blas
     - blas
     - blas-devel
+    - libblas * *openblas  # [linux]
     - pagmo-devel
     - eigen >=3,<5
     - nlopt <2.10.1
@@ -47,7 +48,7 @@ requirements:
     - pygmo
     - sgp4
     - blas
-    - libatomic  # [linux]
+    - libblas * *openblas  # [linux]
     - spiceypy
 
 about:
