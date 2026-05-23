@@ -33,6 +33,8 @@ requirements:
     - spdlog
     - xtensor >=0.26
     - xtensor-blas
+    - blas
+    - blas-devel
     - pagmo-devel
     - eigen >=3,<5
     - nlopt <2.10.1
@@ -44,7 +46,7 @@ requirements:
     - scipy
     - pygmo
     - sgp4
-    - libopenblas
+    - blas
 
 about:
   home: https://esa.github.io/pykep/
