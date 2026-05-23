@@ -10,6 +10,7 @@ cmake ^
     -Dkep3_BUILD_BENCHMARKS=OFF ^
     -Dkep3_BUILD_PYTHON_BINDINGS=ON ^
     -DPYKEP_INSTALL_PATH=%SP_DIR% ^
+    -DPython3_EXECUTABLE=%PYTHON% ^
     ..
 
 cmake --build . --config Release
