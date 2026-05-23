@@ -44,7 +44,7 @@ requirements:
     - scipy
     - pygmo
     - sgp4
-    - spiceypy
+    - libopenblas
 
 about:
   home: https://esa.github.io/pykep/
