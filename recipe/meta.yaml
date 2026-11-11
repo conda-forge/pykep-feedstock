@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -38,6 +38,7 @@ requirements:
     - blas
     - blas-devel
     - libblas * *openblas  # [linux]
+    - openblas  # [win]
     - pagmo-devel
     - eigen >=3,<5
     - nlopt
@@ -51,7 +52,11 @@ requirements:
     - sgp4
     - blas
     - libblas * *openblas  # [linux]
+    - openblas  # [win]
     - spiceypy
+test:
+  imports:
+    - pykep
 
 about:
   home: https://esa.github.io/pykep/
