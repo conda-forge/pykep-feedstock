@@ -38,7 +38,7 @@ requirements:
     - libblas * *openblas  # [linux]
     - pagmo-devel
     - eigen >=3,<5
-    - nlopt <2.10.1
+    - nlopt
   run:
     - python
     - heyoka.py >=7
