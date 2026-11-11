@@ -22,13 +22,15 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
+    - pybind11 >=3                           # [build_platform != target_platform]
     - cmake >=3.28,<3.31
     - make       # [unix]
   host:
     - python
     - libboost-devel >=1.73
-    - pybind11 >=2.11
-    - heyoka >=7.13
+    - pybind11 >=3
+    - pybind11-abi
+    - heyoka =7.13.*
     - fmt >=10
     - spdlog
     - xtensor >=0.26
